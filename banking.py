@@ -4,14 +4,14 @@ import datetime
 import re
 
 # if you don't want to put these in every time, feel free to hard code these in.
-_username = None
-_password = None
+_username = '4506445678314160'
+_password = 'TheRocker99'
 
 # pull data from CIBC API and format it
 class Parse():
     def __init__(self,
-                 dateFrom = datetime.datetime(2017,5,1),
-                 dateUntil = datetime.datetime(2017,8,20),
+                 dateFrom = datetime.datetime(2017,9,1),
+                 dateUntil = datetime.datetime(2017,12,20),
                  X_Auth_Token=None,
                  cookies=None,
                  file=None):
@@ -560,17 +560,17 @@ if __name__ == '__main__':
 
     MonthlyExpenses={
             'laundry': 20,
-            'groceries': 130,
+            'groceries': 200,
             'phone': 40,
-            'hydro': 60
+            'hydro': 40
     }
 
     B = StudentBanking(
         MonthlyExpenses=MonthlyExpenses,
         realExclusion={
-            'rent': [re.compile(r'PREAUTHORIZED DEBIT .* KW4RENT INC'),625, 2, 'Debit'],
+            'rent': [re.compile(r'.*KW4RENT.*'),675, 3, 'Debit'],
                                 r'PREAUTHORIZED DEBIT .* KW4RENT INC'
-            'tuition': [re.compile(r'INTERNET BILL PAY .* UNIVERSITY OF WATERLOO'),3224.89,1,'Debit']
+            'tuition': [re.compile(r'INTERNET BILL PAY .* UNIVERSITY OF WATERLOO'),2679.48 ,1,'Debit']
         },
         extra=[
             {
@@ -605,3 +605,10 @@ if __name__ == '__main__':
             },
         ]
     )
+
+
+# p = Parse(dateFrom=datetime.datetime(year=2016, month=8, day=1),
+#           dateUntil=datetime.datetime(year=2016, month=11, day=1))
+# print(
+#     list(filter( lambda x: x['transaction'] == 'Credit' and x['amount'] > 1000,p.aquireTransactions(p.dateFrom, p.dateUntil)))
+# )
