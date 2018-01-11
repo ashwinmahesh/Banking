@@ -4,8 +4,8 @@ import datetime
 import re
 
 # if you don't want to put these in every time, feel free to hard code these in.
-_username = '4506445678314160'
-_password = 'TheRocker99'
+_username = None
+_password = None
 
 # pull data from CIBC API and format it
 class Parse():
@@ -562,15 +562,15 @@ if __name__ == '__main__':
             'laundry': 20,
             'groceries': 200,
             'phone': 40,
-            'hydro': 40
+            'hydro': 15
     }
 
     B = StudentBanking(
         MonthlyExpenses=MonthlyExpenses,
         realExclusion={
-            'rent': [re.compile(r'.*KW4RENT.*'),675, 3, 'Debit'],
+            'rent': [re.compile(r'.*KW4RENT.*'),675, 4, 'Debit'],
                                 r'PREAUTHORIZED DEBIT .* KW4RENT INC'
-            'tuition': [re.compile(r'INTERNET BILL PAY .* UNIVERSITY OF WATERLOO'),2679.48 ,1,'Debit']
+            'tuition': [re.compile(r'INTERNET BILL PAY .* UNIVERSITY OF WATERLOO'),3516.48,1,'Debit']
         },
         extra=[
             {
